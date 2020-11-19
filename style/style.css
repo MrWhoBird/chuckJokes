@@ -1,0 +1,15 @@
+.box{
+    min-height: 480px;
+}
+
+.lead{
+    height: 30px !important;
+}
+
+.btn-link{
+    cursor: pointer;
+}
+
+.btn-link:hover{
+    text-decoration: none;
+}
