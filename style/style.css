@@ -13,3 +13,7 @@
 .btn-link:hover{
     text-decoration: none;
 }
+
+footer{
+    height: 109px;
+}

@@ -1,3 +1,7 @@
+const collapseOne = document.querySelector('#collapseOne')
+const srchBtn = document.querySelector('.srchBtn')
+const favorite = document.querySelector('.favorite')
+const favoriteJokesPlaceholder = document.querySelector('.favoriteJokesPlaceholder')
 //random joke data
 const randomJokeForm = document.querySelector('.randomJokeForm')
 //category select data
@@ -28,6 +32,9 @@ categorySelectForm.addEventListener('submit', e => {
 
         })
         .catch(err => jokePlaceholder.innerText = err + ' Connection error. Check your connection or try again later.')
+    if(collapseOne.classList.contains('show')){
+        srchBtn.click()
+    }
 })
 
 searchCategoryForm.addEventListener('submit', e => {
@@ -36,8 +43,19 @@ searchCategoryForm.addEventListener('submit', e => {
     chuck.getInput(queryValue)
         .then(data => {
             data.result.forEach(el => {
-                jokePlaceholder.innerText += el.value
+                jokePlaceholder.innerText = el.value
+                console.log(el)
             })
         })
         .catch(err => jokePlaceholder.innerText = err + ' Connection error. Check your connection or try again later.')
 })
+
+favorite.addEventListener('click', e => {
+    e.preventDefault()
+    let now = new Date().getTime()
+    if(jokePlaceholder.innerText){
+        localStorage.setItem(now, jokePlaceholder.innerText)
+    }
+})
+
+favoriteJokesPlaceholder.innerText = localStorage.getItem
