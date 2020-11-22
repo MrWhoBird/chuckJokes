@@ -35,6 +35,16 @@
 
         <div class="navbar navbar-light bg-primary shadow-sm">
             <div class="container d-flex justify-content-between">
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link  text-white" id="pills-home-tab" data-toggle="pill" href="#pills-home"
+                            role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link text-white" id="pills-profile-tab" data-toggle="pill" href="#pills-profile"
+                            role="tab" aria-controls="pills-profile" aria-selected="false">Favorite Jokes</a>
+                    </li>
+                </ul>
                 <a href="#" class="navbar-brand d-flex align-items-center">
                     <strong>ChuckJokes - HubKaluza</strong>
                 </a>
@@ -48,24 +58,18 @@
 
     <main role="main">
 
-        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-            <li class="nav-item" role="presentation">
-              <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
-            </li>
-            <li class="nav-item" role="presentation">
-              <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Favorite Jokes</a>
-            </li>
-          </ul>
-          <div class="tab-content" id="pills-tabContent">
+        <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                 <section class="jumbotron text-center">
-                    <h1><div class="jokePlaceholder text-center text-danger"></div></h1>
-                    <button type="submit" class="favorite btn btn-primary">Add to favorite</button>
+                    <h1>
+                        <div class="jokePlaceholder text-center text-danger"></div>
+                    </h1>
+                    <button type="submit" class="favoriteBtn btn btn-primary">Add to favorite</button>
                 </section>
-        
+
                 <div class="py-5 bg-light">
                     <div class="container">
-        
+
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="card mb-4 shadow-lg box">
@@ -75,14 +79,15 @@
                                             <form class="randomJokeForm my-5">
                                                 <div class="form-group text-center">
                                                     <div class="lead mb-5">Try a random joke</div>
-                                                    <button type="submit" class="btn btn-primary mt-5">Next joke -></button>
+                                                    <button type="submit" class="btn btn-primary mt-5">Next joke
+                                                        -></button>
                                                 </div>
                                             </form>
                                         </p>
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="col-md-4">
                                 <div class="card mb-4 shadow-lg box">
                                     <div class="text-center"><i class="icon-search card-img-top"></i></div>
@@ -95,99 +100,127 @@
                                                             <div class="card-header bg-white border-0" id="headingOne">
                                                                 <h5 class="mb-0">
                                                                     <div class="srchBtn lead btn-link mb-5 text-center"
-                                                                        data-toggle="collapse" data-target="#collapseOne"
-                                                                        aria-expanded="true" aria-controls="collapseOne">Select
+                                                                        data-toggle="collapse"
+                                                                        data-target="#collapseOne" aria-expanded="true"
+                                                                        aria-controls="collapseOne">Select
                                                                         a category...</div>
                                                                 </h5>
                                                             </div>
-                                                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
-                                                                data-parent="#accordion">
+                                                            <div id="collapseOne" class="collapse"
+                                                                aria-labelledby="headingOne" data-parent="#accordion">
                                                                 <div class="card-body">
                                                                     <div class="row">
                                                                         <div class="col-6">
                                                                             <div class="form-check">
-                                                                                <input class="form-check-input" type="radio"
-                                                                                    name="categoryName" value="animal">
+                                                                                <input class="form-check-input" type="radio" name="categoryName" value="animal">
                                                                                 <label class="form-check-label">Animal</label>
                                                                             </div>
                                                                             <div class="form-check">
-                                                                                <input class="form-check-input" type="radio"
-                                                                                    name="categoryName" value="career">
-                                                                                <label class="form-check-label">Career</label>
+                                                                                <input class="form-check-input"
+                                                                                    type="radio" name="categoryName"
+                                                                                    value="career">
+                                                                                <label
+                                                                                    class="form-check-label">Career</label>
                                                                             </div>
                                                                             <div class="form-check">
-                                                                                <input class="form-check-input" type="radio"
-                                                                                    name="categoryName" value="celebrity">
+                                                                                <input class="form-check-input"
+                                                                                    type="radio" name="categoryName"
+                                                                                    value="celebrity">
                                                                                 <label
                                                                                     class="form-check-label">Celebrity</label>
                                                                             </div>
                                                                             <div class="form-check">
-                                                                                <input class="form-check-input" type="radio"
-                                                                                    name="categoryName" value="dev">
-                                                                                <label class="form-check-label">Dev</label>
+                                                                                <input class="form-check-input"
+                                                                                    type="radio" name="categoryName"
+                                                                                    value="dev">
+                                                                                <label
+                                                                                    class="form-check-label">Dev</label>
                                                                             </div>
                                                                             <div class="form-check">
-                                                                                <input class="form-check-input" type="radio"
-                                                                                    name="categoryName" value="explict">
-                                                                                <label class="form-check-label">Explicit</label>
+                                                                                <input class="form-check-input"
+                                                                                    type="radio" name="categoryName"
+                                                                                    value="explict">
+                                                                                <label
+                                                                                    class="form-check-label">Explicit</label>
                                                                             </div>
                                                                             <div class="form-check">
-                                                                                <input class="form-check-input" type="radio"
-                                                                                    name="categoryName" value="fasion">
-                                                                                <label class="form-check-label">Fashion</label>
+                                                                                <input class="form-check-input"
+                                                                                    type="radio" name="categoryName"
+                                                                                    value="fasion">
+                                                                                <label
+                                                                                    class="form-check-label">Fashion</label>
                                                                             </div>
                                                                             <div class="form-check">
-                                                                                <input class="form-check-input" type="radio"
-                                                                                    name="categoryName" value="food">
-                                                                                <label class="form-check-label">Food</label>
+                                                                                <input class="form-check-input"
+                                                                                    type="radio" name="categoryName"
+                                                                                    value="food">
+                                                                                <label
+                                                                                    class="form-check-label">Food</label>
                                                                             </div>
                                                                             <div class="form-check">
-                                                                                <input class="form-check-input" type="radio"
-                                                                                    name="categoryName" value="history">
-                                                                                <label class="form-check-label">History</label>
+                                                                                <input class="form-check-input"
+                                                                                    type="radio" name="categoryName"
+                                                                                    value="history">
+                                                                                <label
+                                                                                    class="form-check-label">History</label>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-6">
                                                                             <div class="form-check">
-                                                                                <input class="form-check-input" type="radio"
-                                                                                    name="categoryName" value="money">
-                                                                                <label class="form-check-label">Money</label>
+                                                                                <input class="form-check-input"
+                                                                                    type="radio" name="categoryName"
+                                                                                    value="money">
+                                                                                <label
+                                                                                    class="form-check-label">Money</label>
                                                                             </div>
                                                                             <div class="form-check">
-                                                                                <input class="form-check-input" type="radio"
-                                                                                    name="categoryName" value="movie">
-                                                                                <label class="form-check-label">Movie</label>
+                                                                                <input class="form-check-input"
+                                                                                    type="radio" name="categoryName"
+                                                                                    value="movie">
+                                                                                <label
+                                                                                    class="form-check-label">Movie</label>
                                                                             </div>
                                                                             <div class="form-check">
-                                                                                <input class="form-check-input" type="radio"
-                                                                                    name="categoryName" value="music">
-                                                                                <label class="form-check-label">Music</label>
+                                                                                <input class="form-check-input"
+                                                                                    type="radio" name="categoryName"
+                                                                                    value="music">
+                                                                                <label
+                                                                                    class="form-check-label">Music</label>
                                                                             </div>
                                                                             <div class="form-check">
-                                                                                <input class="form-check-input" type="radio"
-                                                                                    name="categoryName" value="political">
+                                                                                <input class="form-check-input"
+                                                                                    type="radio" name="categoryName"
+                                                                                    value="political">
                                                                                 <label
                                                                                     class="form-check-label">Political</label>
                                                                             </div>
                                                                             <div class="form-check">
-                                                                                <input class="form-check-input" type="radio"
-                                                                                    name="categoryName" value="religion">
-                                                                                <label class="form-check-label">Religion</label>
+                                                                                <input class="form-check-input"
+                                                                                    type="radio" name="categoryName"
+                                                                                    value="religion">
+                                                                                <label
+                                                                                    class="form-check-label">Religion</label>
                                                                             </div>
                                                                             <div class="form-check">
-                                                                                <input class="form-check-input" type="radio"
-                                                                                    name="categoryName" value="science">
-                                                                                <label class="form-check-label">Science</label>
+                                                                                <input class="form-check-input"
+                                                                                    type="radio" name="categoryName"
+                                                                                    value="science">
+                                                                                <label
+                                                                                    class="form-check-label">Science</label>
                                                                             </div>
                                                                             <div class="form-check">
-                                                                                <input class="form-check-input" type="radio"
-                                                                                    name="categoryName" value="sport">
-                                                                                <label class="form-check-label">Sport</label>
+                                                                                <input class="form-check-input"
+                                                                                    type="radio" name="categoryName"
+                                                                                    value="sport">
+                                                                                <label
+                                                                                    class="form-check-label">Sport</label>
                                                                             </div>
                                                                             <div class="form-check">
-                                                                                <input class="form-check-input" type="radio"
-                                                                                    name="categoryName" value="travel">
-                                                                                <label class="form-check-label">Travel</label>
+                                                                                <input class="form-check-input"
+                                                                                    type="radio" name="categoryName"
+                                                                                    value="travel">
+                                                                                <label
+                                                                                    class="form-check-label">Travel</label>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -195,14 +228,15 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <button type="submit" class="btn btn-primary mt-4">Search -></button>
+                                                    <button type="submit" class="btn btn-primary mt-4">Search
+                                                        -></button>
                                                 </div>
                                             </form>
                                         </p>
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="col-md-4">
                                 <div class="card mb-4 shadow-lg box">
                                     <div class="text-center"><i class="icon-keyboard card-img-top"></i></div>
@@ -210,27 +244,29 @@
                                         <p class="card-text">
                                             <form class="searchCategoryForm my-5">
                                                 <div class="form-group text-center">
-                                                    <input type="text" class="lead mb-5 searchCategoryInput form-control"
+                                                    <input type="text"
+                                                        class="lead mb-5 searchCategoryInput form-control"
                                                         placeholder="Or try your own text...">
-                                                    <button type="submit" class="btn btn-primary mt-5">Search -></button>
+                                                    <button type="submit" class="btn btn-primary mt-5">Search
+                                                        -></button>
                                                 </div>
                                             </form>
                                         </p>
                                     </div>
                                 </div>
                             </div>
-        
+
                         </div>
                     </div>
                 </div>
-        
+
             </div>
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                 <div class="favoriteJokesPlaceholder"></div>
             </div>
-          </div>
+        </div>
 
- 
+
     </main>
 
     <footer class="shadow-lg pt-3 mb-0 rounded text-center">
@@ -241,6 +277,7 @@
         </div>
     </footer>
     <script src="./script/Chuck.js"></script>
+    <script src="./script/Ui.js"></script>
     <script src="./script/actions.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
