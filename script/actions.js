@@ -2,20 +2,20 @@ const collapseOne = document.querySelector('#collapseOne')
 const srchBtn = document.querySelector('.srchBtn')
 const favoriteBtn = document.querySelector('.favoriteBtn')
 const favoriteJokesPlaceholder = document.querySelector('.favoriteJokesPlaceholder')
-let favoriteJokesArr = [];
-//random joke data
 const randomJokeForm = document.querySelector('.randomJokeForm')
-//category select data
 const categorySelectForm = document.querySelector('.categorySelectForm')
-//searchCategoryForm
 const searchCategoryForm = document.querySelector('.searchCategoryForm')
 const searchCategoryInput = document.querySelector('.searchCategoryInput')
-//jokes placeholder
 const jokePlaceholder = document.querySelector('.jokePlaceholder')
-//import chuck class
+
+//import classes
 const chuck = new Chuck()
 const ui = new Ui()
 
+//load favorite jokes from local storage
+ui.getFromLocalStorage();
+
+//user pick a random joke
 randomJokeForm.addEventListener('submit', e => {
     e.preventDefault()
     chuck.getRandomJoke()
@@ -25,6 +25,7 @@ randomJokeForm.addEventListener('submit', e => {
         .catch(err => jokePlaceholder.innerText = err + ' Connection error. Check your connection or try again later.')
 })
 
+//user select category
 categorySelectForm.addEventListener('submit', e => {
     e.preventDefault()
     const queryValue = categorySelectForm.categoryName.value
@@ -39,6 +40,7 @@ categorySelectForm.addEventListener('submit', e => {
     }
 })
 
+//user input search
 searchCategoryForm.addEventListener('submit', e => {
     e.preventDefault()
     const queryValue = searchCategoryInput.value
@@ -52,9 +54,23 @@ searchCategoryForm.addEventListener('submit', e => {
         .catch(err => jokePlaceholder.innerText = err + ' Connection error. Check your connection or try again later.')
 })
 
+//add to favorites
 favoriteBtn.addEventListener('click', e => {
     e.preventDefault()
     ui.addFavoriteJoke(jokePlaceholder.innerText);
 })
 
-ui.getFromLocalStorage();
+const deleteTodo = todo => todo.parentElement.remove()
+
+//delete favorite joke
+favoriteJokesPlaceholder.addEventListener('click', e => {
+    e.target.classList.contains('deleteBtn') ? deleteTodo(e.target) : true
+    const target = e.target.parentElement.getAttribute('data-key')
+    console.log(target)
+    
+    let oldJokesArray = JSON.parse(localStorage.getItem('favJokes'))
+    let newJokesArray = oldJokesArray.filter(el => {
+        return el.id != target
+    })
+    localStorage.setItem('favJokes', JSON.stringify(newJokesArray))
+})

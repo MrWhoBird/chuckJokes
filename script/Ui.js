@@ -1,7 +1,8 @@
 class Ui {
     constructor() {
-
+        this.favoriteJokesArr = [];
     }
+    
     addFavoriteJoke = item => {
         if (item) {
             const joke = {
@@ -9,32 +10,35 @@ class Ui {
                 content: item,
             };
 
-            favoriteJokesArr.push(joke);
+            this.favoriteJokesArr.push(joke);
 
-            localStorage.setItem('favJokes', JSON.stringify(favoriteJokesArr))
+            localStorage.setItem('favJokes', JSON.stringify(this.favoriteJokesArr))
             let arr = localStorage.getItem('favJokes')
 
-            this.renderTodos(JSON.parse(arr));
+            this.renderJokes(JSON.parse(arr));
         }
     }
-    renderTodos = arr => {
-        console.log(arr)
-        favoriteJokesPlaceholder.innerHTML = '';
+
+    renderJokes = arr => {
+        favoriteJokesPlaceholder.innerHTML = ''
         arr.forEach(el => {
-            const li = document.createElement('li');
-            li.setAttribute('data-key', el.id);
-            li.innerHTML = `
-            ${el.content}
-            <button class="delete-button">X</button>
-          `;
-            favoriteJokesPlaceholder.append(li);
+            const template = `
+            <div class="container">
+            <li data-key="${el.id}" class="list-group-item">
+            <div class="favJokeLi">${el.content}</div>
+            <button type="button" class="btn btn-outline-danger deleteBtn">Delete</button>
+            </li>
+            </div>
+            `
+            favoriteJokesPlaceholder.innerHTML += template
         });
     }
+
     getFromLocalStorage = () => {
         const reference = localStorage.getItem('favJokes');
         if (reference) {
-            favoriteJokesArr = JSON.parse(reference);
-            this.renderTodos(favoriteJokesArr);
+            this.favoriteJokesArr = JSON.parse(reference);
+            this.renderJokes(this.favoriteJokesArr);
         }
     }
 }

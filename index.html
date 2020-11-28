@@ -112,8 +112,11 @@
                                                                     <div class="row">
                                                                         <div class="col-6">
                                                                             <div class="form-check">
-                                                                                <input class="form-check-input" type="radio" name="categoryName" value="animal">
-                                                                                <label class="form-check-label">Animal</label>
+                                                                                <input class="form-check-input"
+                                                                                    type="radio" name="categoryName"
+                                                                                    value="animal">
+                                                                                <label
+                                                                                    class="form-check-label">Animal</label>
                                                                             </div>
                                                                             <div class="form-check">
                                                                                 <input class="form-check-input"
@@ -261,12 +264,15 @@
                 </div>
 
             </div>
+
+            <!-- favorite jokes subsite -->
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                <div class="favoriteJokesPlaceholder"></div>
+                <div class="">
+                    <ul class="favoriteJokesPlaceholder list-group">
+                    </ul>
+                </div>
             </div>
         </div>
-
-
     </main>
 
     <footer class="shadow-lg pt-3 mb-0 rounded text-center">
@@ -276,6 +282,7 @@
                         target="_blank">https://api.chucknorris.io/</a></strong></p>
         </div>
     </footer>
+
     <script src="./script/Chuck.js"></script>
     <script src="./script/Ui.js"></script>
     <script src="./script/actions.js"></script>
