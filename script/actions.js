@@ -1,12 +1,13 @@
+const categorySelectForm = document.querySelector('.categorySelectForm')
+const searchCategoryForm = document.querySelector('.searchCategoryForm')
+const searchCategoryInput = document.querySelector('.searchCategoryInput')
 const collapseOne = document.querySelector('#collapseOne')
 const srchBtn = document.querySelector('.srchBtn')
 const favoriteBtn = document.querySelector('.favoriteBtn')
 const favoriteJokesPlaceholder = document.querySelector('.favoriteJokesPlaceholder')
 const randomJokeForm = document.querySelector('.randomJokeForm')
-const categorySelectForm = document.querySelector('.categorySelectForm')
-const searchCategoryForm = document.querySelector('.searchCategoryForm')
-const searchCategoryInput = document.querySelector('.searchCategoryInput')
 const jokePlaceholder = document.querySelector('.jokePlaceholder')
+const modalBtn = document.querySelector('.modalBtn')
 
 //import classes
 const chuck = new Chuck()
@@ -21,8 +22,9 @@ randomJokeForm.addEventListener('submit', e => {
     chuck.getRandomJoke()
         .then(data => {
             jokePlaceholder.innerText = data.value
+            ui.toggleFavBtn()
         })
-        .catch(err => jokePlaceholder.innerText = err + ' Connection error. Check your connection or try again later.')
+        .catch( () => alert('Connection error. Check your connection or try again later.'))
 })
 
 //user select category
@@ -31,13 +33,11 @@ categorySelectForm.addEventListener('submit', e => {
     const queryValue = categorySelectForm.categoryName.value
     chuck.getSelectedCategory(queryValue)
         .then(data => {
-            jokePlaceholder.innerText = data.value
-
+            data.value === undefined ? alert('Data error. Check your input.') : jokePlaceholder.innerText = data.value
+            ui.toggleFavBtn()
         })
-        .catch(err => jokePlaceholder.innerText = err + ' Connection error. Check your connection or try again later.')
-    if(collapseOne.classList.contains('show')){
-        srchBtn.click()
-    }
+        .catch( () => alert('Connection error. Check your connection or try again later.'))
+    collapseOne.classList.contains('show') ? srchBtn.click() : true
 })
 
 //user input search
@@ -46,31 +46,22 @@ searchCategoryForm.addEventListener('submit', e => {
     const queryValue = searchCategoryInput.value
     chuck.getInput(queryValue)
         .then(data => {
+            data.result.length === 0 ? alert('No results! Try with another input') : true
             data.result.forEach(el => {
                 jokePlaceholder.innerText = el.value
-                console.log(el)
+                ui.toggleFavBtn()
             })
         })
-        .catch(err => jokePlaceholder.innerText = err + ' Connection error. Check your connection or try again later.')
+        .catch( () => alert('Try with another input or check your connection'))
 })
 
-//add to favorites
+//add a jokes to favorites
 favoriteBtn.addEventListener('click', e => {
     e.preventDefault()
-    ui.addFavoriteJoke(jokePlaceholder.innerText);
+    ui.addFavoriteJoke(jokePlaceholder.innerText)
 })
 
-const deleteTodo = todo => todo.parentElement.remove()
-
-//delete favorite joke
+//delete selected joke
 favoriteJokesPlaceholder.addEventListener('click', e => {
-    e.target.classList.contains('deleteBtn') ? deleteTodo(e.target) : true
-    const target = e.target.parentElement.getAttribute('data-key')
-    console.log(target)
-    
-    let oldJokesArray = JSON.parse(localStorage.getItem('favJokes'))
-    let newJokesArray = oldJokesArray.filter(el => {
-        return el.id != target
-    })
-    localStorage.setItem('favJokes', JSON.stringify(newJokesArray))
+    e.target.classList.contains('deleteBtn') ? ui.deleteFavJoke(e) : true
 })

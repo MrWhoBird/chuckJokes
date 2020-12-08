@@ -14,17 +14,31 @@
     text-decoration: none;
 }
 
+.navbar-brand{
+    position: absolute;
+}
+
+.modal-content{
+    width: 800px !important;
+    position: relative;
+    right: 150px;
+    top: 300px;
+}
+
 footer{
-    height: 109px;
+    height: 120px;
 }
 
 .favJokeLi{
-    max-width: 70% !important;
-    position: relative;
+    max-width: 70%;
 }
 
 .deleteBtn{
-    position: absolute;
-    top: 5px;
-    right: 10px;
+    display: inline-block;
+    margin: 5px 10px 0px 1000px;
+}
+
+.div1{
+    display: inline-block;
+    margin: auto;
 }

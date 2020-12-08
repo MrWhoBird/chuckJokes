@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>ChuckJokes - WhoBe</title>
+    <title>ChuckJokes - HubKaluza</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="./style/fontello.css">
@@ -16,15 +16,15 @@
         <div class="collapse bg-primary" id="navbarHeader">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-8 col-md-7 py-4">
-                        <div class="shadow-lg p-3 mb-5 bg-white rounded">
-                            <h4 class="display-4">About</h4>
+                    <div class="div1 py-4">
+                        <div class="shadow-lg p-3 bg-white rounded">
+                            <h2>About</h2>
                             <p>A simple project interacting with the Chuck Norris API to fetch some
-                                jokes! You can choose from 3 different ways to find your content:
+                                jokes. You can choose from 3 different ways to find your content:
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">-> try a random joke</li>
-                                    <li class="list-group-item">-> select a specific category</li>
-                                    <li class="list-group-item">-> type in your own text</li>
+                                    <li class="list-group-item">🡺 try a random joke</li>
+                                    <li class="list-group-item">🡺 select a specific category</li>
+                                    <li class="list-group-item">🡺 type in your own text</li>
                                 </ul>
                             </p>
                         </div>
@@ -34,10 +34,11 @@
         </div>
 
         <div class="navbar navbar-light bg-primary shadow-sm">
+            <strong class="navbar-brand d-flex text-white">ChuckJokes - HubKaluza</strong>
             <div class="container d-flex justify-content-between">
-                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <ul class="nav nav-pills" id="pills-tab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link  text-white" id="pills-home-tab" data-toggle="pill" href="#pills-home"
+                        <a class="nav-link text-white" id="pills-home-tab" data-toggle="pill" href="#pills-home"
                             role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
                     </li>
                     <li class="nav-item" role="presentation">
@@ -45,9 +46,6 @@
                             role="tab" aria-controls="pills-profile" aria-selected="false">Favorite Jokes</a>
                     </li>
                 </ul>
-                <a href="#" class="navbar-brand d-flex align-items-center">
-                    <strong>ChuckJokes - HubKaluza</strong>
-                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
                     aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -61,10 +59,21 @@
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                 <section class="jumbotron text-center">
-                    <h1>
-                        <div class="jokePlaceholder text-center text-danger"></div>
-                    </h1>
-                    <button type="submit" class="favoriteBtn btn btn-primary">Add to favorite</button>
+                    <h1><div class="jokePlaceholder text-center text-danger"></div></h1>
+                    <button class="modalBtn btn btn-primary d-none" data-toggle="modal" data-target="#exampleModal">modalBtn</button>
+                    <button type="submit" class="mt-4 d-none favoriteBtn btn btn-primary">Add to favorites</button>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h1 class="modal-title text-primary" id="exampleModalLabel">The joke has been added to your collection!</h1>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                 </section>
 
                 <div class="py-5 bg-light">
