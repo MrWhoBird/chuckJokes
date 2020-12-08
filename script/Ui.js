@@ -44,7 +44,7 @@ class Ui {
     }
     getFromLocalStorage = () => {
         const reference = localStorage.getItem('favJokes');
-        if(!reference) {
+        if(!reference || JSON.parse(reference).length === 0) {
             const template = '<h1 class="py-4 display-4 text-center">You don\'t have any jokes yet!</h1>'
             favoriteJokesPlaceholder.innerHTML += template
         }else{
