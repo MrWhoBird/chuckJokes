@@ -13,7 +13,7 @@ const modalBtn = document.querySelector('.modalBtn')
 const chuck = new Chuck()
 const ui = new Ui()
 
-//load favorite jokes from local storage
+//load favorite jokes from local storage at the page load
 ui.getFromLocalStorage();
 
 //user pick a random joke
@@ -22,6 +22,7 @@ randomJokeForm.addEventListener('submit', e => {
     chuck.getRandomJoke()
         .then(data => {
             jokePlaceholder.innerText = data.value
+            //show the button
             ui.toggleFavBtn()
         })
         .catch( () => alert('Connection error. Check your connection or try again later.'))
@@ -34,6 +35,7 @@ categorySelectForm.addEventListener('submit', e => {
     chuck.getSelectedCategory(queryValue)
         .then(data => {
             data.value === undefined ? alert('Data error. Check your input.') : jokePlaceholder.innerText = data.value
+            //show the button
             ui.toggleFavBtn()
         })
         .catch( () => alert('Connection error. Check your connection or try again later.'))
@@ -49,6 +51,7 @@ searchCategoryForm.addEventListener('submit', e => {
             data.result.length === 0 ? alert('No results! Try with another input') : true
             data.result.forEach(el => {
                 jokePlaceholder.innerText = el.value
+                //show the button
                 ui.toggleFavBtn()
             })
         })

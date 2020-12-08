@@ -7,6 +7,7 @@ class Ui {
     toggleFavBtn = () => {
         jokePlaceholder.innerText ? favoriteBtn.classList.remove('d-none') : favoriteBtn.classList.add('d-none')
     }
+
     //add joke to local storage and call rendering function
     addFavoriteJoke = item => {
         if (item) {
@@ -25,6 +26,7 @@ class Ui {
             modalBtn.click()
         }
     }
+
     //render the list
     renderJokes = arr => {
             favoriteJokesPlaceholder.innerHTML = ''
@@ -42,6 +44,8 @@ class Ui {
                 this.toggleFavBtn()
             });
     }
+
+    //load the array from local storage
     getFromLocalStorage = () => {
         const reference = localStorage.getItem('favJokes');
         if(!reference || JSON.parse(reference).length === 0) {
@@ -52,6 +56,8 @@ class Ui {
             this.renderJokes(this.favoriteJokesArr);
         }
     }
+
+    //delete jokes
     deleteFavJoke = e => {
         const dataKey = e.target.parentElement.getAttribute('data-key')
     
